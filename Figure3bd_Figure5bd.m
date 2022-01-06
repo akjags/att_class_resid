@@ -1,9 +1,13 @@
+%% Function to plot classification accuracy and residual correlation of every ROI, grouped by lobes.
+%%
+%%:
+%%
 function plot_classification_residcorr_byLobe()
 
 %% Change these paths if you need to.
 results_path = '/Users/akshay/proj/kgs';
-rc_results = load(sprintf('%s/Results_ResidCorr_Glasser_BySubj.mat', results_path));
-class_results = load(sprintf('%s/Results_Classification_Glasser_BySubj.mat', results_path));
+rc_results = load(sprintf('%s/ResidCorrGlasser_BySubj_revision.mat', results_path));
+class_results = load(sprintf('%s/Classification_Glasser_BySubj_revision.mat', results_path));
 
 
 %% Loop through all fields and take the mean
@@ -68,6 +72,7 @@ for hi = 1:length(hemis)
         ign_lobe = cr_ign(lobe_map.lobe_nums == li);
         att_se_lobe = se_att(lobe_map.lobe_nums==li);
         ign_se_lobe = se_ign(lobe_map.lobe_nums==li);
+        roi_names_lobe = lobe_map.roi_name(lobe_map.lobe_nums==li);
         
         [sorted, idx] = sort(att_lobe, 'descend');
         
@@ -78,12 +83,29 @@ for hi = 1:length(hemis)
                    'Symbol', '-', 'yErrorBarType', 'fill', 'Color', colorsAtt(li,:),...
                    'LineWidth', 2);
         xticks = [xticks, (2*x + length(att_lobe)-1)/2];
+
+        index = 1:2:5;
+        for ii = 1:3
+            ti = index(ii);
+            offsets = [3 .05; 5, .05; 7, .02];
+            text_xpos = (x+ti-1)+offsets(ii,1);
+            text_ypos = att_lobe(idx(ti))+offsets(ii,2);
+            text( text_xpos, text_ypos, roi_names_lobe{idx(ti)});
+            plot( x+ti-1, att_lobe(idx(ti)), '.k', 'MarkerSize', 10);
+            plot([x+ti-1, text_xpos] , [att_lobe(idx(ti)) text_ypos], '-k');
+        end
         x = x+length(att_lobe);
     end
+    x_ax = 1:x;
+    myerrorbar(x_ax, repmat(0.2002, 1,length(x_ax)),'yError',repmat(0.0234, 1, length(x_ax)),...
+                   'Symbol', '--', 'yErrorBarType', 'fill', 'Color', [0.5,0.5,0.5],...
+                   'LineWidth', 2);
+
     xticks(2:4) = xticks(2:4)+10;
     title(hemis{hi});
-    ylim([0,1]);
-    hline(0.2, ':k');
+    ylim([0,.75]);
+    xlim([1, x]);
+    %hline(0.2002, 'k');
     set(gca, 'XTick', xticks);
     set(gca, 'XTickLabels', lobe_map.lobe_names);
     set(gca, 'FontSize', 18);
@@ -121,12 +143,28 @@ for hi = 1:length(hemis)
                    'Symbol', '-', 'yErrorBarType', 'fill', 'Color', colorsAtt(li,:),...
                    'LineWidth', 2);
         xticks = [xticks, (2*x + length(att_lobe)-1)/2];
+
+        index = 1:2:5;
+        for ii = 1:3
+            ti = index(ii);
+            offsets = [3 .05; 5, .03; 6.5, .02];
+            text_xpos = (x+ti-1)+offsets(ii,1);
+            text_ypos = att_lobe(idx(ti))+offsets(ii,2);
+            text( text_xpos, text_ypos, roi_names_lobe{idx(ti)});
+            plot( x+ti-1, att_lobe(idx(ti)), '.k', 'MarkerSize', 10);
+            plot([x+ti-1, text_xpos] , [att_lobe(idx(ti)) text_ypos], '-k');
+        end
         x = x+length(att_lobe);
     end
+    x_ax = 1:x;
+    myerrorbar(x_ax, repmat(0.01, 1,length(x_ax)),'yError',repmat(.03, 1, length(x_ax)),...
+                   'Symbol', '--', 'yErrorBarType', 'fill', 'Color', [0.5,0.5,0.5],...
+                   'LineWidth', 2);
+
     xticks(2:4) = xticks(2:4)+10;
     title(hemis{hi});
-    ylim([-.05, .5]);
-    hline(0.01, ':k');
+    ylim([-.1, .4]);
+    xlim([1, x]);    
     set(gca, 'XTick', xticks);
     set(gca, 'XTickLabels', lobe_map.lobe_names);
     set(gca, 'FontSize', 18);
