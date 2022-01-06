@@ -1,3 +1,9 @@
+'''
+rgb2dlabel.py
+
+This file contains functions for generating a set of dlabel files, which can be input into connectome workbench to generate a colored brain map.
+
+'''
 import nibabel as nib
 import nibabel.cifti2 as ci
 import numpy as np
