@@ -50,26 +50,17 @@ def save_label_file(data, fieldname='FixCoeff_Glasser', save_name=''):
 
 if __name__ == '__main__':
   ## Classification accuracy annd residual correlations
-  # data1 = load_data('Results_Colormaps/Glasser_Classification_Colormaps_withThresh_Revision2.mat');
-  # data2 = load_data('Results_Colormaps/Glasser_Residuals_Colormaps_withThresh_Oct21.mat');
+  # data1 = load_data('Results_Colormaps/Glasser_Classification_Colormaps_AttendIgnore.mat');
+  # data2 = load_data('Results_Colormaps/Glasser_Residuals_Colormaps_AttendIgnore.mat');
   # new_image1 = save_label_file(data1, fieldname='attended', save_name='class_thresh_revision2')
   # new_image1 = save_label_file(data1, fieldname='ignored', save_name='class_thresh_revision2')
   # new_image2 = save_label_file(data2, fieldname='attended', save_name='resid_thresh_oct21')
   # new_image2 = save_label_file(data2, fieldname='ignored', save_name='resid_thresh_oct21')
 
   ## Differennces
-  data3 = load_data('Results_Colormaps/Glasser_Classification_Difference_Colormaps_withThresh_Dec21.mat');
+  data3 = load_data('Results_Colormaps/Glasser_Classification_Colormaps_Difference.mat');
   new_image3 = save_label_file(data3, fieldname='diffs', save_name='class_diffs_Dec21')
-  data4 = load_data('Results_Colormaps/Glasser_Residuals_Difference_Colormaps_withThresh_Dec21.mat');
+  data4 = load_data('Results_Colormaps/Glasser_Residuals_Colormaps_Difference.mat');
   new_image4 = save_label_file(data4, fieldname='diffs', save_name='resid_diffs_Dec21')
 
-  ## Behavior
-  # data5 = load_data('Results_Colormaps/Glasser_Classification_BehFixEff_Colormaps_withThresh.mat');
-  # data6 = load_data('Results_Colormaps/Glasser_Residuals_BehFixEff_Colormaps_withThresh.mat');
-  # new_image5 = save_label_file(data5, fieldname='FixCoeff_Glasser', save_name='Class_rt')
-  # new_image6 = save_label_file(data6, fieldname='FixCoeff_Glasser', save_name='Resid_rt')
 
-  # data7 = load_data('Results_Colormaps/Glasser_Classification_BehFixEff_Colormaps_Acc.mat');
-  # data8 = load_data('Results_Colormaps/Glasser_Residuals_BehFixEff_Colormaps_Acc.mat');
-  # new_image7 = save_label_file(data7, fieldname='FixCoeff_Glasser', save_name='Class_acc')
-  # new_image8 = save_label_file(data8, fieldname='FixCoeff_Glasser', save_name='Resid_acc')

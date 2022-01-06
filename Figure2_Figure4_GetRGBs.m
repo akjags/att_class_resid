@@ -48,7 +48,7 @@ rgb_RH_ignored(VTCareasToExclude,:) = ones(9,3);
 
 
 % Save output:
-save('Glasser_Residuals_Colormaps_withThresh_Oct21','rgb_LH_attended','rgb_RH_attended','rgb_LH_ignored','rgb_RH_ignored','AreasToUse');
+save('Glasser_Residuals_Colormaps_AttendIgnore','rgb_LH_attended','rgb_RH_attended','rgb_LH_ignored','rgb_RH_ignored','AreasToUse');
 
 
 %% Residual Correlations Difference Maps (Figure 4c)
@@ -64,7 +64,7 @@ rgb_LH_diffs(VTCareasToExclude,:) = ones(9,3);
 rgb_RH_diffs(VTCareasToExclude,:) = ones(9,3);
 
 % Save output:
-save('Glasser_Residuals_Difference_Colormaps_withThresh_Dec21','rgb_LH_diffs','rgb_RH_diffs','AreasToUse');
+save('Glasser_Residuals_Colormaps_Difference','rgb_LH_diffs','rgb_RH_diffs','AreasToUse');
 
 %% Classification Accuracy (Figure 2ab)
 clear all
@@ -123,7 +123,7 @@ rgb_RH_ignored(VTCareasToExclude,:) = ones(9,3);
 
 
 % Save output:
-save('Glasser_Classification_Colormaps_withThresh_Revision2','rgb_LH_attended','rgb_RH_attended','rgb_LH_ignored','rgb_RH_ignored','AreasToUse');
+save('Glasser_Classification_Colormaps_AttendIgnore','rgb_LH_attended','rgb_RH_attended','rgb_LH_ignored','rgb_RH_ignored','AreasToUse');
 
 
 %% Classification Accuracy Difference Maps (Figure 2c)
@@ -140,5 +140,5 @@ rgb_RH_diffs(VTCareasToExclude,:) = ones(9,3);
 
 
 % Save output:
-save('Glasser_Classification_Difference_Colormaps_withThresh_Dec21','rgb_LH_diffs','rgb_RH_diffs','AreasToUse');
+save('Glasser_Classification_Colormaps_Difference','rgb_LH_diffs','rgb_RH_diffs','AreasToUse');
 
