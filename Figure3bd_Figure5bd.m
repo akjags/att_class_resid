@@ -2,12 +2,12 @@
 %%
 %%:
 %%
-function plot_classification_residcorr_byLobe()
+function Figure3bd_Figure5bd()
 
 %% Change these paths if you need to.
 results_path = '/Users/akshay/proj/kgs';
-rc_results = load(sprintf('%s/ResidCorrGlasser_BySubj_revision.mat', results_path));
-class_results = load(sprintf('%s/Classification_Glasser_BySubj_revision.mat', results_path));
+rc_results = load(sprintf('%s/data_residual_correlations_by_subject.mat', results_path));
+class_results = load(sprintf('%s/data_classification_accuracy_by_subject.mat', results_path));
 
 
 %% Loop through all fields and take the mean
